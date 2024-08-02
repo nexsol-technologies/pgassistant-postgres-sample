@@ -1,0 +1,14 @@
+
+services:
+  demo-db:
+    restart: always
+    image: postgres:16.3-alpine3.20
+    environment:
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo
+      - POSTGRES_DB=demo
+    command: >
+        postgres
+        -c shared_preload_libraries='pg_stat_statements'
+    ports:
+      - 5432:5432
